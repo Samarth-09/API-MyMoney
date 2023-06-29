@@ -7,7 +7,9 @@ app.use(express.json());
 mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/?retryWrites=true&w=majority').then(function () {
     const port = process.env.PORT || 3000;
     app.listen(port, () => { console.log(`server started at port:- ${port}`) });
-
+    app.get('/', (req, res) =>{
+        res.send("Hello World");
+    });
     app.get('/student/read/:id', async (req, res) => {
         const student_data = await student_model.find({ id: req.params.id });
         if (student_data.length==0) {
