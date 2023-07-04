@@ -1,36 +1,22 @@
 const mongoose = require('mongoose');
 
 const student_schema = new mongoose.Schema({
-    id: {
-        type: Number,
-        unique: true,
-        required: true
-    },
-    name: {
+    username:{
         type: String,
-        required: true
+        unique: true
+        //required: true
     },
-    email: {
+    password:{
         type: String,
-        required: true
+        //required:true
     },
-    dept: {
-        type: String,
-        required: true
-    },
-    sem: {
-        type: Number,
-        required: true
-    },
-    rollno: {
-        type: Number,
-        required: true
-    },
-    marks: {
+    spent_money:{
         type: Map,
         of: Number,
-        required: true
-    }
+    },
+    Total_balance: Number,
+    Total_money_spent: Number
+
 });
 
-module.exports = mongoose.model('student', student_schema);
+module.exports = mongoose.model('user', student_schema);
