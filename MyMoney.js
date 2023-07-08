@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const student_model = require('./model');
-
+const cors = require('cors');
 const app = express();
+app.use(cors());
 app.use(express.json());
 mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/?retryWrites=true&w=majority').then(function () {
     const port = process.env.PORT || 3000;
@@ -57,3 +58,5 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
     });
 });
 //https://samarth-09.github.io/API-MyMoney/
+
+//https://lively-undershirt-bat.cyclic.app/
