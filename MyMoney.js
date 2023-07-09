@@ -51,11 +51,11 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
             Total_balance: req.body.Total_balance,
             spent_money: req.body.spent_money,
             Total_money_spent: req.body.Total_money_spent,
-            last_transactions: req.body.lt
+            lt: req.body.lt
         });
         await student_model.deleteOne({ username: req.body.username });
         await new_student.save();
-        res.json(new_student);
+        res.json({msg:"Done"});
     });
 
     // app.get('/readname/:username', async (req, res) =>{
