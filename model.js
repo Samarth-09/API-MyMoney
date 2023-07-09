@@ -1,22 +1,28 @@
 const mongoose = require('mongoose');
 
 const student_schema = new mongoose.Schema({
-    username:{
+    username: {
         type: String,
         unique: true
-        //required: true
+
     },
-    password:{
+    password: {
         type: String,
-        //required:true
+
     },
-    spent_money:{
+    spent_money: {
         type: Map,
         of: Number,
     },
     Total_balance: Number,
-    Total_money_spent: Number
+    Total_money_spent: Number,
+    lt: {
+        type: Map,
+        of: [String],
+
+    }
 
 });
+
 
 module.exports = mongoose.model('user', student_schema);
