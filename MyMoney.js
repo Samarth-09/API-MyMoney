@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
     app.get('/read/:username', async (req, res) => {
         const student_data = await student_model.find({ username: req.params.username });
         if (student_data.length == 0) {
-            res.json({ msg: "Username is not present" });
+            res.json({ "msg": "Username is not present" });
             return;
         }
         res.json(student_data);
@@ -37,12 +37,12 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
             lt: req.body.lt
         });
         await new_student.save();
-        res.json({ msg: "New User Created" });
+        res.json({ "msg": "New User Created" });
     });
     app.post('/add/:username', async (req, res) => {
         const student_data = await student_model.find({ username: req.params.username });
         if (student_data.length == 0) {
-            res.json({ msg: "Username doesnot exist" });
+            res.json({ "msg": "Username doesnot exist" });
             return;
         }
         const new_student = new student_model({
