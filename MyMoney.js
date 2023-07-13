@@ -2,9 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const student_model = require('./model');
 const cors = require('cors');
+const bodyParser = require("body-parser"); 
+
+//router.use(bodyParser.json());
 const app = express();
+app.use(bodyParser.json());
 app.use(cors({
-    origin:"*"
+    origin: "*"
 }));
 app.use(express.json());
 mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/?retryWrites=true&w=majority').then(function () {
@@ -42,6 +46,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
         res.json({ "msg": "New User Created" });
     });
     app.post('/add/:username', async (req, res) => {
+        console.log(req.body.username + req.body.password + req.body.Total_balance);
         const student_data = await student_model.find({ username: req.params.username });
         if (student_data.length == 0) {
             res.json({ "msg": "Username doesnot exist" });
@@ -57,7 +62,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
         });
         await student_model.deleteOne({ username: req.body.username });
         await new_student.save();
-        res.json({msg:"Done"});
+        res.json({ msg: "Done" });
     });
 
     // app.get('/readname/:username', async (req, res) =>{
