@@ -2,11 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const student_model = require('./model');
 const cors = require('cors');
-const bodyParser = require("body-parser"); 
+const bodyParser = require("body-parser");
 
 //router.use(bodyParser.json());
 const app = express();
 app.use(bodyParser.json());
+app.use(express.urlencoded({
+    extended: true
+}))
 app.use(cors({
     origin: "*"
 }));
