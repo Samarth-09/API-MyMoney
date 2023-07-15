@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 const student_model = require('./model');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-
-//router.use(bodyParser.json());
 const app = express();
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({
     extended: true
@@ -13,7 +12,7 @@ app.use(express.urlencoded({
 app.use(cors({
     origin: "*"
 }));
-app.use(express.json());
+
 mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/?retryWrites=true&w=majority').then(function () {
     const port = process.env.PORT || 3000;
     app.listen(port, () => { console.log(`server started at port:- ${port}`) });
