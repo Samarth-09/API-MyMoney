@@ -1,17 +1,12 @@
-const express = require('express');
 const mongoose = require('mongoose');
-const student_model = require('./model');
-const cors = require('cors');
+const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
-app.use(express.json());
-app.use(bodyParser.json());
+const student_model = require('./model');
 app.use(bodyParser.urlencoded({
     extended: true
-}))
-app.use(cors({
-    origin: "*"
 }));
+app.use(bodyParser.json());
 
 mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/?retryWrites=true&w=majority').then(function () {
     const port = process.env.PORT || 3000;
@@ -32,7 +27,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
         const student_data = await student_model.find({ username: req.body.username });
         if (student_data.length != 0) {
             console.log(student_data);
-            res.json({ msd: "Username already present" });
+            res.json({ "msg": "Username already present" });
             return;
         }
         console.log(student_data);
