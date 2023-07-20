@@ -59,7 +59,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
         });
         await student_model.deleteOne({ username: req.body.username });
         await new_student.save();
-        res.json({ msg: "Done" });
+        res.json({ "msg": "Done" });
     });
 
     // app.get('/readname/:username', async (req, res) =>{
