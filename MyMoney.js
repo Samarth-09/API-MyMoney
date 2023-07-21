@@ -57,7 +57,7 @@ mongoose.connect('mongodb+srv://samarth:samarth009@cluster0.twpsfoj.mongodb.net/
             Total_money_spent: req.body.Total_money_spent,
             lt: req.body.lt
         });
-        await student_model.deleteOne({ username: req.body.username });
+        //await student_model.deleteOne({ username: req.body.username });
         await new_student.save();
         res.json({ "msg": "Done" });
     });
